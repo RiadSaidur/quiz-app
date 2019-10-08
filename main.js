@@ -43,6 +43,7 @@ function addQuiz(quizes){
   let index = 0;
   nextQuiz(quizes[0]);
   quizNumber.textContent = ` ${index+1}/10`;
+  result.textContent = 0;
   recognition.onresult = event => {
     const result = event.results[0][0].transcript;
     if(result == 'true' || result == 'false'){
