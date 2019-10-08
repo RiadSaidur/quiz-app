@@ -1,41 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./style.css">
-  <title>REDquiz</title>
-</head>
-<body>
-  <div class="container">
-    <header>
-      <h1>RED</h1><span>quiz</span>
-    </header>
-    
-    <div class="point-container">
-      <p class="quiz-nummber">5/10</p>
-      <p class="quiz-point">0</p>
-    </div>
-    
-    <div class="quiz-container">
-      <div class="quiz">
-        <p class="question">How are you doing?</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Righteous&display=swap"
+      rel="stylesheet"
+    />
+    <title>REDquiz</title>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>RED <span>quiz</span></h1>
+
+        <button class="restart">Restart</button>
+      </header>
+
+      <div class="point-container">
         <div>
+          <p>Question:</p>
+          <p class="quiz-nummber">0/10</p>
+        </div>
+        <div>
+          <p>Score:</p>
+          <p class="quiz-point">0</p>
+        </div>
+      </div>
+
+      <div class="quiz-container">
+        <div class="quiz">
+          <p class="question">No Internet Connection</p>
+          <div>
             <button class="answer true">True</button>
             <button class="answer false">False</button>
+          </div>
         </div>
+      </div>
+
+      <div class="voice">
+        <button class="btn"></button>
       </div>
     </div>
 
-    <div class="voice">
-        <button class="btn"></button>
-    </div>
-
-  </div>
-
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <script src="./main.js"></script>
-</body>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./main.js"></script>
+  </body>
 </html>

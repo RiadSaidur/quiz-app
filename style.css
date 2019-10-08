@@ -1,83 +1,95 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body{
-  font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
-  background-color: lavender;
+body {
+  font-family: "Segoe UI", Tahoma, Verdana, sans-serif;
+  background-color: #3f434d;
 }
 
-header{
+header {
   height: 10vh;
   display: flex;
   align-items: center;
-  justify-content: center;
-  background-color: lightgreen;
+  justify-content: space-around;
+  background-color: #313640;
 }
 
-h1{
+h1 {
   font-weight: 400;
-  font-family: 'Pacifico', cursive;
-  color: darkred;
+  font-family: "Pacifico", cursive;
+  color: #9f1010;
 }
 
-span{
-  font-size: 2rem;
-  font-weight: 200;
-  font-size: 40px;
+span {
+  font-weight: 400;
+  font-family: "Righteous", cursive;
+  color: #d9d9d9;
 }
 
-button{
+.restart {
+  border: 2px solid #d9d9d9;
+  padding: 5px;
+  font-size: 1rem;
+  background: #313640;
+  color: #d9d9d9;
+  border-radius: 5px;
+}
+
+button {
   cursor: pointer;
 }
 
-button:focus{
+button:focus {
   outline: 0;
 }
 
-button:hover{
+button:hover {
   transform: scale(1.1);
 }
 
-.point-container{
+.point-container {
   height: 15vh;
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
 
-.point-container > p{
+.point-container > div {
+  color: #d9d9d9;
+  display: flex;
   font-size: 1.6rem;
-  padding: .5rem 1rem;
-  border: 2px solid snow;
+  padding: 0.5rem 1rem;
 }
 
-.quiz-container{
+.quiz-container {
   height: 40vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.quiz{
+.quiz {
+  color: #d9d9d9;
   height: 100%;
   width: 70vw;
   display: flex;
   align-items: center;
   justify-content: space-around;
   flex-direction: column;
-  border: 2px solid crimson;
+  /* border: 2px solid crimson; */
   border-radius: 4px;
-  background-image: linear-gradient(-20deg, lawngreen, lightgreen, lawngreen);
+  text-align: center;
+  background-color: #313640;
 }
 
-.quiz > p{
+.quiz > p {
   font-size: 1.2rem;
 }
 
-.quiz > div{
+.quiz > div {
   width: 100%;
   height: 40px;
   display: flex;
@@ -85,7 +97,7 @@ button:hover{
   justify-content: space-around;
 }
 
-.answer{
+.answer {
   width: 20%;
   height: 100%;
   display: flex;
@@ -94,15 +106,15 @@ button:hover{
   font-size: 1.2rem;
 }
 
-.true{
-  border: 2px solid darkgreen;
+.true {
+  border: 3px solid darkgreen;
 }
 
-.false{
-  border: 2px solid crimson;
+.false {
+  border: 3px solid crimson;
 }
 
-.voice{
+.voice {
   height: 20vh;
   display: flex;
   align-items: center;
@@ -110,26 +122,26 @@ button:hover{
   margin-top: 2rem;
 }
 
-.btn{
+.btn {
   height: 120px;
   width: 120px;
-  border: 2px solid black;
+  border: 2px solid white;
   border-radius: 50%;
-  background-image: url('./assets/microphone-black-shape.svg');
+  background-image: url("./assets/microphone-black-shape.svg");
   background-size: 40px;
   background-repeat: no-repeat;
   background-position: center;
 }
 
-.btn:focus{
+.btn:focus {
   animation: microphone 1.3s infinite ease-out;
 }
 
-@keyframes microphone{
-  0%{
+@keyframes microphone {
+  0% {
     transform: rotate(0deg);
   }
-  100%{
+  100% {
     transform: rotate(360deg);
   }
 }
