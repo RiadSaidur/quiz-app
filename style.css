@@ -133,7 +133,7 @@ button:hover {
   background-position: center;
 }
 
-.btn:focus {
+.animateMic {
   animation: microphone 1.3s infinite ease-out;
 }
 
