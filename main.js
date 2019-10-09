@@ -14,7 +14,9 @@ let quizes = [];
 let textResult = '';
 
 window.addEventListener('load', loadQuiz);
-restart.addEventListener('click', loadQuiz);
+restart.addEventListener('click', () => {
+  location.reload(true);
+});
 
 if(speachReco){
   btn.addEventListener('click', () => {
@@ -23,13 +25,13 @@ if(speachReco){
 }
 else alert(`Your browser doesn't support voice command`);
 
-recognition.onstart = () => {
-  console.log('voice is activated');
+recognition.onstart = (event) => {
+  console.log(event);
   btn.classList.add('animateMic');
 }
 
 recognition.onerror = event => {
-  console.log(event);
+  alert(event.error);
 }
 
 recognition.onend = event => {
@@ -44,23 +46,20 @@ function loadQuiz(){
     quizes = response.data.results; 
     addQuiz();
   })
-  console.log('load quiz');
   return;
 }
 
 function addQuiz(){
-  console.log(quizes);
-  nextQuiz(quizes[0]);
-  index = 0;
-  quizNumber.textContent = ` ${index+1}/10`;
-  result.textContent = 0;
+  nextQuiz(quizes[index]);
+  quizNumber.innerHTML = ` ${index+1}/10`;
+  result.innerHTML = 0;
   recognition.onresult = event => {
     textResult = event.results[0][0].transcript;
     if(textResult == 'true' || textResult == 'false'){
       if(quizes[index].correct_answer == textResult){
-        let point = result.textContent;
+        let point = result.innerHTML;
         point++;
-        result.textContent = point;
+        result.innerHTML = point;
       }
       else if(textResult == 'restart'){
         loadQuiz();
@@ -68,25 +67,20 @@ function addQuiz(){
       }
       index++;
       if(index >= 10){
-        showResult(result.textContent)
+        showResult(result.innerHTML)
         return;
       }
       nextQuiz(quizes[index]);
-      console.log(quizes[index]);
     }
-    console.log(result);
-    console.log(event);
   }
   answerTrue.addEventListener('click', trueHandle);
   answerFalse.addEventListener('click', falseHandle);
-  console.log('add quiz');
 }
 
 function nextQuiz(quiz){
   setTimeout(() => {
     document.querySelector('.question').innerHTML = quiz.question;
   }, 1000);
-  console.log(quiz);
   return;
 }
 
@@ -97,39 +91,36 @@ function showResult(point){
 
 function trueHandle(){
   if(quizes[index].correct_answer === "True"){
-    let point = result.textContent;
+    let point = result.innerHTML;
     point++;
-    result.textContent = ` ${point}`;
+    result.innerHTML = ` ${point}`;
   }
   index++;
   if(index >= 10){
-    showResult(result.textContent);
+    showResult(result.innerHTML);
     answerTrue.removeEventListener('click', trueHandle);
     answerFalse.removeEventListener('click', falseHandle);
   }
   else{
     nextQuiz(quizes[index]);
-    quizNumber.textContent = ` ${index+1}/10`;
+    quizNumber.innerHTML = ` ${index+1}/10`;
   }
-  console.log('True Handle');
 }
 
 function falseHandle(){
   if(quizes[index].correct_answer === "False"){
-    let point = result.textContent;
+    let point = result.innerHTML;
     point++;
-    result.textContent = ` ${point}`;
+    result.innerHTML = ` ${point}`;
   }
   index++;
   if(index >= 10){
-    showResult(result.textContent);
+    showResult(result.innerHTML);
     answerTrue.removeEventListener('click', trueHandle);
     answerFalse.removeEventListener('click', falseHandle);
   }
   else{
     nextQuiz(quizes[index]);
-    quizNumber.textContent = ` ${index+1}/10`;
+    quizNumber.innerHTML = ` ${index+1}/10`;
   }
-  
-  console.log('False Handle');
 }
