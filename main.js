@@ -65,6 +65,7 @@ function addQuiz(){
         loadQuiz();
         return;
       }
+      else alert('Sorry, please try again');
       index++;
       if(index >= 10){
         showResult(result.innerHTML)
