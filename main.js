@@ -1,7 +1,3 @@
-const speachReco = window.SpeechRecognition || window.webkitSpeechRecognition;
-const recognition = new speachReco();
-recognition.lang = 'en-GB';
-
 const btn = document.querySelector('.btn');
 const answerTrue = document.querySelector('.true');
 const answerFalse = document.querySelector('.false');
@@ -11,33 +7,11 @@ const restart = document.querySelector('.restart');
 
 let index = 0;
 let quizes = [];
-let textResult = '';
 
 window.addEventListener('load', loadQuiz);
 restart.addEventListener('click', () => {
   location.reload(true);
 });
-
-if(speachReco){
-  btn.addEventListener('click', () => {
-    recognition.start();
-  });
-}
-else alert(`Your browser doesn't support voice command`);
-
-recognition.onstart = (event) => {
-  console.log(event);
-  btn.classList.add('animateMic');
-}
-
-recognition.onerror = event => {
-  alert(event.error);
-}
-
-recognition.onend = event => {
-  console.log(event);
-  btn.classList.remove('animateMic');
-}
 
 function loadQuiz(){
   const api = `https://opentdb.com/api.php?amount=10&type=boolean`;
@@ -53,27 +27,7 @@ function addQuiz(){
   nextQuiz(quizes[index]);
   quizNumber.innerHTML = ` ${index+1}/10`;
   result.innerHTML = 0;
-  recognition.onresult = event => {
-    textResult = event.results[0][0].transcript;
-    if(textResult == 'true' || textResult == 'false'){
-      if(quizes[index].correct_answer == textResult){
-        let point = result.innerHTML;
-        point++;
-        result.innerHTML = point;
-      }
-      else if(textResult == 'restart'){
-        loadQuiz();
-        return;
-      }
-      else alert('Sorry, please try again');
-      index++;
-      if(index >= 10){
-        showResult(result.innerHTML)
-        return;
-      }
-      nextQuiz(quizes[index]);
-    }
-  }
+  
   answerTrue.addEventListener('click', trueHandle);
   answerFalse.addEventListener('click', falseHandle);
 }
